@@ -52,7 +52,12 @@ WHERE employees.employees.gender = 'F';
 # | Manager            |     1 |
 # +--------------------+-------+
 
-SELECT
+SELECT title, COUNT(*) AS total FROM employees
+JOIN titles ON employees.emp_no = titles.emp_no
+JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
+JOIN departments ON dept_emp.dept_no = departments.dept_no
+WHERE departments.dept_name = 'Customer Service'
+GROUP BY title;
 
 
 
